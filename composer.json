@@ -1,0 +1,23 @@
+{
+    "name": "artemy/peach",
+    "description": "I love my kitty sm",
+    "autoload": {
+        "psr-4": {
+            "Peach\\Controllers\\": "controllers/",
+            "Peach\\Handlers\\": "handlers/",
+            "Peach\\Http\\": "http/",
+            "Peach\\Visualizers\\": "visualizers/",
+            "Peach\\Repositories\\": "repositories/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Artemy",
+            "email": "me@artemy.net"
+        }
+    ],
+    "require": {
+      "ext-fileinfo": "*",
+      "ext-pdo": "*"
+    }
+}

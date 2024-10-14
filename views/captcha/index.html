@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/views/captcha/style.css">
+    <script defer src="/views/captcha/index.js"></script>
+    <title>Drawing app</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+<section class="container">
+    <div id="toolbar">
+        <h1>PEACH Captcha</h1>
+        <button id="clear">Clear</button>
+        <button id="validate-captcha">Validate captcha</button>
+        <a id="tryAgainLink" href="/" style="width: 100%"><button style="width: 100%">Try again</button></a>
+    </div>
+    <div class="canvas-container">
+        <canvas id="canvas-el"></canvas>
+    </div>
+</section>
+</body>
+</html>
