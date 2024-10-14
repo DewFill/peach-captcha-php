@@ -21,7 +21,7 @@
 **/*.jfm
 **/charts
 **/docker-compose*
-**/compose.y*ml
+deployment/docker-compose.yml
 !**/composer.json
 !**/composer.lock
 **/Dockerfile*
