@@ -10,6 +10,7 @@ class MaskRepository
                                 private float $min_percentage_match_1,
                                 private float $max_percentage_not_match_2,
                                 private int $point_tolerance,
+                                private ?int $view_count = null,
                                 private ImageRepository|null $imageRepository = null)
     {
     }
@@ -31,7 +32,7 @@ class MaskRepository
 
     public static function fromArray(array $array): self
     {
-        return new self($array['id'], $array['image_id'], $array['points'], $array['min_percentage_match_1'], $array['max_percentage_not_match_2'], $array['point_tolerance']);
+        return new self($array['id'], $array['image_id'], $array['points'], $array['min_percentage_match_1'], $array['max_percentage_not_match_2'], $array['point_tolerance'], $array['view_count']);
     }
 
     public function getMinPercentageMatch1(): float
@@ -59,4 +60,11 @@ class MaskRepository
     {
         return $this->imageRepository;
     }
+
+    public function getViewCount(): int
+    {
+        return $this->view_count;
+    }
+
+
 }

@@ -14,6 +14,7 @@ class MaskHandler
     private const DEFAULT_PERCENTAGE_MATCH_1 = .8;
     private const DEFAULT_PERCENTAGE_NOT_MATCH_2 = .2;
     private const POINT_TOLERANCE = 10;
+
     public function __construct(private MaskVisualizer $visualizer, private MaskController $maskController, private RequestRepository $requestRepository, private ImageController $imageController)
     {
     }
@@ -25,7 +26,7 @@ class MaskHandler
         };
     }
 
-    function handleApiCreateMask():callable
+    function handleApiCreateMask(): callable
     {
         return function () {
             if (!isset($_FILES["image"]) or !isset($_FILES["image"]["tmp_name"]) or !($_FILES["image"]["error"] === 0)) {
@@ -36,7 +37,14 @@ class MaskHandler
                 throw new Exception("File upload error");
             }
 
-            $maskRepository = $this->maskController->createMask($image_id, "[]", self::DEFAULT_PERCENTAGE_MATCH_1, self::DEFAULT_PERCENTAGE_NOT_MATCH_2, self::POINT_TOLERANCE);
+            $maskRepository = $this->maskController->createMask(
+                $image_id,
+                "[]",
+                self::DEFAULT_PERCENTAGE_MATCH_1,
+                self::DEFAULT_PERCENTAGE_NOT_MATCH_2,
+                self::POINT_TOLERANCE,
+                0
+            );
 
             if ($maskRepository === false) {
                 throw new Exception("Cannot create mask");
