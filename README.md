@@ -20,8 +20,7 @@ This command will build a Docker image, run all containers and install Composer
 ```shell
 make start
 ```
-The application will run on http://localhost:80. You can create a Docker Compose override file and modify it in deployment/docker-compose.override.yml
-
+The application will run on http://localhost:80.
 ### Additional Usage
 ```shell
 # Stop all containers without losing data
@@ -57,6 +56,11 @@ This application was manually tested on Apple Silicon macOS computer
 * Unit Tests are not available
 * End-to-end Tests are not available
 * Behavioral Tests are not available
+
+# Troubleshooting
+**Bind for 0.0.0.0:80 failed: port is already allocated** 
+
+If port 80 is already in use, you can easily override it. Simply create a deployment/docker-compose.override.yml file and copy the contents from deployment/docker-compose.override.yml.example into it. After that, start the application as usual.
 
 # Accessibility
 This CAPTCHA requires the ability to visually identify and outline objects in an image, which may not be accessible to individuals who are visually impaired, people with cognitive or motor impairments, or users relying on screen readers. Additionally, slow internet connections may affect the loading and solving process. Consider using alternative CAPTCHA methods, such as audio or text-based challenges, to ensure broader accessibility.
