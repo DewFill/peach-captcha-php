@@ -2,6 +2,7 @@
 
 namespace Peach\Handlers;
 
+use Exception;
 use Peach\Controllers\ImageController;
 
 class ImageHandler
@@ -14,7 +15,7 @@ class ImageHandler
     {
         return function () {
             if (!isset($_GET["image_id"]) or !is_numeric($_GET["image_id"])) {
-                throw new \Exception("Invalid image id");
+                throw new Exception("Invalid image id");
             }
             $imageRepository = $this->imageController->getImage($_GET["image_id"]);
             header("Content-Type: {$imageRepository->getMineType()}");

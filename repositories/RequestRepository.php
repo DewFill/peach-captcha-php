@@ -20,11 +20,15 @@ class RequestRepository
         return $this->method;
     }
 
-    /**
-     * @return string
-     */
     public function getBody(): string
     {
         return $this->body;
     }
+
+    public function getQuery(): string
+    {
+        return $this->query;
+    }
+
+
 }

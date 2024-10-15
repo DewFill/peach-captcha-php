@@ -2,6 +2,7 @@
 
 namespace Peach\Controllers;
 
+use Exception;
 use JsonException;
 use PDO;
 use Peach\Repositories\MaskRepository;
@@ -71,7 +72,7 @@ class MaskController
         $stmt = $this->database->getPDO()->prepare("SELECT id FROM masks ORDER BY RAND() LIMIT 1;");
 
         $isExecuted = $stmt->execute();
-        if ($isExecuted === false) return throw new \Exception("Database error");
+        if ($isExecuted === false) return throw new Exception("Database error");
 
         // Получение результата
         return $stmt->fetch(PDO::FETCH_ASSOC)["id"];

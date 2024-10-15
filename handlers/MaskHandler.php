@@ -29,17 +29,17 @@ class MaskHandler
     {
         return function () {
             if (!isset($_FILES["image"]) or !isset($_FILES["image"]["tmp_name"]) or !($_FILES["image"]["error"] === 0)) {
-                throw new \Exception("File upload error");
+                throw new Exception("File upload error");
             }
             $image_id = $this->imageController->uploadImage($_FILES["image"]["tmp_name"]);
             if ($image_id === false) {
-                throw new \Exception("File upload error");
+                throw new Exception("File upload error");
             }
 
             $maskRepository = $this->maskController->createMask($image_id, "[]", self::DEFAULT_PERCENTAGE_MATCH_1, self::DEFAULT_PERCENTAGE_NOT_MATCH_2, self::POINT_TOLERANCE);
 
             if ($maskRepository === false) {
-                throw new \Exception("Cannot create mask");
+                throw new Exception("Cannot create mask");
             }
 
             echo json_encode([

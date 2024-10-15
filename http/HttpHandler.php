@@ -11,7 +11,6 @@ use Peach\Controllers\MaskController;
 use Peach\Handlers\AttemptsHandler;
 use Peach\Handlers\CaptchaHandler;
 use Peach\Handlers\ImageHandler;
-use Peach\Handlers\MainPageHandler;
 use Peach\Handlers\MaskHandler;
 use Peach\Repositories\RequestRepository;
 use Peach\Visualizers\CaptchaVisualizer;
@@ -57,8 +56,6 @@ class HttpHandler
 
     function registerStandardHandlers(DatabaseController $database_controller): void
     {
-        $main_page_visualizer = new CaptchaVisualizer();
-//        $main_page_handler = new MainPageHandler($main_page_visualizer);
         $attempts_controller = new AttemptsController($database_controller);
         $attempts_handler = new AttemptsHandler($attempts_controller, $this->request_repository);
         $mask_visualizer = new MaskVisualizer();

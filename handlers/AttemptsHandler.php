@@ -8,9 +8,9 @@ use Peach\Repositories\AttemptRepository;
 use Peach\Repositories\RequestRepository;
 use Peach\Visualizers\PreviewVisualizer;
 
-class AttemptsHandler
+readonly class AttemptsHandler
 {
-    public function __construct(private readonly AttemptsController $attemptsController, private readonly RequestRepository $requestRepository)
+    public function __construct(private AttemptsController $attemptsController, private RequestRepository $requestRepository)
     {
     }
 

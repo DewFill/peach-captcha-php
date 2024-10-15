@@ -1,12 +1,8 @@
 <?php
 
-use Peach\Controllers\AttemptsController;
 use Peach\Controllers\DatabaseController;
-use Peach\Handlers\AttemptsHandler;
-use Peach\Handlers\MainPageHandler;
 use Peach\Http\HttpHandler;
 use Peach\Repositories\RequestRepository;
-use Peach\Visualizers\CaptchaVisualizer;
 
 require __DIR__ . "/../vendor/autoload.php";
 

@@ -2,6 +2,7 @@
 
 namespace Peach\Controllers;
 
+use Exception;
 use PDO;
 use Peach\Repositories\ImageRepository;
 use Peach\Repositories\MaskRepository;
@@ -33,7 +34,7 @@ class ImageController
         $mime_type = mime_content_type($filename);
 
         if ($mime_type !== 'image/jpeg' and $mime_type !== 'image/png') {
-            throw new \Exception("File type is not allowed");
+            throw new Exception("File type is not allowed");
         }
         $imageInfo = getimagesize($filename);
         $width = $imageInfo[0];
