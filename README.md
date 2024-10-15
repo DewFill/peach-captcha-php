@@ -12,7 +12,7 @@ To solve the CAPTCHA, simply outline Peach, my beloved cat, in the imageâ€”donâ€
 You will need [Git](https://git-scm.com) and [Docker](https://www.docker.com) already installed on your system. Your system also has to be able to execute `make -v` command
 ### 1. Clone the Repository
 ```shell
-git clone git@github.com:DewFill/peach-captcha-php.git
+git clone https://github.com/DewFill/peach-captcha-php.git
 ```
 
 ### 2. Start the Application
