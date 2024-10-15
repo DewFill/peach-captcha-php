@@ -1,4 +1,5 @@
 services:
+  # Added PHPMyAdmin for easier DB management
   phpmyadmin:
     image: phpmyadmin
     restart: always
@@ -6,3 +7,8 @@ services:
       - "8080:80"
     environment:
       - PMA_ARBITRARY=1
+
+  # Changed port to 8081
+  site:
+    ports: !override
+      - "8081:80"
