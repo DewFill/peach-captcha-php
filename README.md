@@ -40,10 +40,47 @@ make bash
 ```
 
 # Endpoints
-API endpoints are not listed here. You can see all available endpoints in the [HttpHandler](http/HttpHandler.php) class in the `registerStandardHandlers` method
+API endpoints are not included in this document. For a complete list of available endpoints, please refer to the registerStandardHandlers method in the [HttpHandler](http/HttpHandler.php) class.
 * http://localhost:80 - Generates new CAPTCHA. You have ~40 seconds to solve it.
 * http://localhost:80/mask - Creates a new CAPTCHA.
 * http://localhost:80/mask?mask_id={id} - Edits an existing CAPTCHA.
+
+# About the algorithm
+Algorithm for Calculating Point Match Percentage Between Masked and User Paths
+
+This algorithm is designed to analyze the match of points between two data sets: masked paths and user paths. It computes two key metrics: the percentage of unique points from the mask affected by the user and the percentage of user points that did not match with mask points.
+
+You can find the programmatic version of the algorithm in the calculatePathSimilarity method of the [CaptchaHandler](handlers/CaptchaHandler.php) class.
+
+
+## Data Structure
+
+The algorithm takes two parameters:
+
+*	maskPaths: An array of masked paths, each containing an array of points.
+* userPaths: An array of user paths, also consisting of arrays of points.
+
+Each point is represented by coordinates (e.g., x and y), and a predefined tolerance is used to evaluate their match.
+
+## Main Steps of the Algorithm
+
+1.	Initialization of Arrays:
+  * Two arrays are created: matchedPoints1 to store unique points from the mask that match user points, and matchedPoints2 to store user points that match with the mask.
+2.	Comparing Mask Points with User Points:
+	* The algorithm iterates through each point from the masked paths and compares it with each point from the user paths.
+	*	If a masked point matches a user point within the defined tolerance, it is added to the matchedPoints1 array. Only one match for each unique masked point is considered, leading to a transition to the next masked path.
+3.	Comparing User Points with Mask Points:
+	*	This part of the algorithm performs the reverse action: it iterates through each point from user paths and checks for matches with points from the mask.
+	*	All matches are added to the matchedPoints2 array, including duplicates, allowing the algorithm to account for the number of misses.
+4.	Calculating the Total Number of Points:
+	*	To compute match and miss percentages, the algorithm determines the total number of points in both data sets. This is done using a helper function that sums the number of points in each path.
+5.	Calculating Percentages:
+	*	The percentage of matches (percentageMatched1) is calculated as the ratio of the number of unique matches to the total number of points in the mask. If there are no points in the mask, it returns 0.
+	*	The percentage of misses (percentageNotMatched2) is determined as the difference between the total number of user points and the number of matches, divided by the total number of user points. If the user paths are empty, it returns 0.
+
+## Conclusion
+
+The result of the algorithm is an array containing two values: the percentage of unique points from the mask that were affected by the user and the percentage of user points that did not match the mask. This analysis provides insights into how effectively the user followed the designated path and highlights areas of discrepancy.
 
 
 # Security
