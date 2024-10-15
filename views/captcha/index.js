@@ -45,10 +45,12 @@ validateCaptchaButton.addEventListener('click', (e) => {
             tryAgainButton.style.display = 'block'; // Меняем стиль на 'block' или 'inline'
             console.log(tryAgainButton.firstChild)
             if (r.status === "success") {
-                tryAgainButton.firstChild.style.backgroundColor = "green"
+                validateCaptchaButton.style.backgroundColor = "green"
             } else {
-                tryAgainButton.firstChild.style.backgroundColor = "red"
+                validateCaptchaButton.style.backgroundColor = "red"
             }
+
+            validateCaptchaButton.disabled = true
 
             captchaMessage(r.message)
         })
