@@ -7,7 +7,7 @@ I’ve been living on my own for quite some time now, which means I don’t get 
 To solve the CAPTCHA, simply outline Peach, my beloved cat, in the image—don’t forget the tail! Once you’ve traced his whole body, click the “Validate CAPTCHA” button to see if you’ve passed.
 
 ![ezgif com-video-to-gif-converter](https://github.com/user-attachments/assets/2aff629c-4443-4b74-8a8c-c5c1b0bcba58)
-
+_Increased speed by 8x._
 # Building and Installing
 You will need [Git](https://git-scm.com) and [Docker](https://www.docker.com) already installed on your system. Your system also has to be able to execute `make -v` command
 ### 1. Clone the Repository
