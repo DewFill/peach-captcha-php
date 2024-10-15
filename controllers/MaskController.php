@@ -94,12 +94,25 @@ class MaskController
 
     function getRandomMaskId(): string
     {
-        $stmt = $this->database->getPDO()->prepare("SELECT id FROM masks ORDER BY RAND() LIMIT 1;");
+        $stmt = $this->database->getPDO()->prepare("SELECT id
+FROM masks
+WHERE view_count = (
+    SELECT MIN(view_count)
+    FROM masks
+)
+ORDER BY RAND()
+LIMIT 1;");
 
         $isExecuted = $stmt->execute();
         if ($isExecuted === false) return throw new Exception("Database error");
 
-        // Получение результата
-        return $stmt->fetch(PDO::FETCH_ASSOC)["id"];
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($result === false) throw new Exception("Random Mask not found");
+
+        $mask_id = $result["id"];
+        self::incViewCount($this->database, $mask_id);
+
+        return $mask_id;
     }
 }
