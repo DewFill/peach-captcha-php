@@ -14,5 +14,5 @@ stop:
 	cd $(deployment_dir) && docker compose down
 
 clear:
-	docker compose down -v --remove-orphans
-	docker compose rm -vsf
+	cd $(deployment_dir) && docker compose down -v --remove-orphans
+	cd $(deployment_dir) && docker compose rm -vsf
