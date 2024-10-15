@@ -9,3 +9,10 @@ start: build-image
 
 bash:
 	cd $(deployment_dir) && docker compose exec site /bin/bash
+
+stop:
+	cd $(deployment_dir) && docker compose down
+
+clear:
+	docker compose down -v --remove-orphans
+	docker compose rm -vsf
